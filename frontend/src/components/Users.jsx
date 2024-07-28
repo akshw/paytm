@@ -8,7 +8,8 @@ function Users() {
           res.data;
         })
         .then(() => {
-          data.json;
+          let resUsers = data.json;
+          setUsers(resUsers);
         });
     }, [])
   );
@@ -23,9 +24,9 @@ function Users() {
         ></input>
       </div>
       <div>
-        {users.map((user) => {
+        {/* {users.map((user) => {
           <User user={user} />;
-        })}
+        })} */}
       </div>
     </>
   );

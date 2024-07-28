@@ -5,28 +5,21 @@ const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config");
 const { User, Account } = require("../db");
 const { authMiddleware } = require("./middleware");
-// import { z } from "zod";
 
 // Signup route
 
-const signUpbody = z.object({
-  username: z.string().email(),
-  password: z.string(),
-  firstname: z.string(),
-  lastname: z.string(),
-});
 router.post("/signup", async (req, res) => {
-  const { success, error } = signUpbody.safeParse(req.body);
+  const reqBody = req.body;
   console.log(req.body);
-  if (!success) {
-    console.log(error);
+  if (!reqBody) {
+    console.log("error");
     return res.status(411).json({
       msg: "incorrect inputs",
     });
   }
 
   const existingUser = await User.findOne({
-    username: req.body.username,
+    username: reqBody.username,
   });
   if (existingUser) {
     return res.status(411).json({
@@ -35,10 +28,10 @@ router.post("/signup", async (req, res) => {
   }
 
   const user = await User.create({
-    username: req.body.username,
-    password: req.body.password,
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
+    username: reqBody.username,
+    password: reqBody.password,
+    firstname: reqBody.firstname,
+    lastname: reqBody.lastname,
   });
 
   const userId = user._id;

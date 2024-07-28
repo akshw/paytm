@@ -25,34 +25,33 @@ function Signup() {
               onChange={(e) => {
                 setFirstName(e.target.value);
               }}
-              placeholder="John"
+              placeholder="Enter your firstname"
               label={"First Name"}
             />
             <InputBox
               onChange={(e) => {
                 setLastName(e.target.value);
               }}
-              placeholder="Doe"
+              placeholder="Enter your lastname"
               label={"Last Name"}
             />
             <InputBox
               onChange={(e) => {
                 setUsername(e.target.value);
               }}
-              placeholder="harkirat@gmail.com"
+              placeholder="Enter your email"
               label={"Email"}
             />
             <InputBox
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
-              placeholder="123456"
+              placeholder="Enter your password"
               label={"Password"}
             />
             <div className="pt-4">
               <Button
                 onClick={async () => {
-                  console.log("hi");
                   const response = await axios.post(
                     "http://localhost:3000/api/v1/user/signup",
                     {

@@ -1,4 +1,4 @@
-function Balance() {
+function Balance({ value }) {
   return (
     <>
       <div className="flex">
