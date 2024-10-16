@@ -11,5 +11,5 @@ app.use(bodyparser.json());
 app.use("/api/v1", rootrouter);
 
 app.listen(3000, () => {
-  console.log("server running");
+  console.log("server up on 3000");
 });
