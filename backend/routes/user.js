@@ -10,7 +10,6 @@ const { authMiddleware } = require("./middleware");
 
 router.post("/signup", async (req, res) => {
   const reqBody = req.body;
-  console.log(req.body);
   if (!reqBody) {
     console.log("error");
     return res.status(411).json({
@@ -59,7 +58,7 @@ router.post("/signup", async (req, res) => {
 
 router.post("/signin", async (req, res) => {
   const existingUser = await User.findOne({
-    username: req.body.username,
+    email: req.body.email,
     password: req.body.password,
   });
   if (!existingUser) {
