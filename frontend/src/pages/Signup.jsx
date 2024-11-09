@@ -22,7 +22,6 @@ const Signup = () => {
           <Inputbox
             onChange={(e) => {
               setusername(e.target.value);
-              console.log(username);
             }}
             placeholder="Enter your username"
             label={"Username"}
@@ -30,7 +29,6 @@ const Signup = () => {
           <Inputbox
             onChange={(e) => {
               setpassword(e.target.value);
-              console.log(password);
             }}
             placeholder="Enter your password"
             label={"Password"}
@@ -38,7 +36,6 @@ const Signup = () => {
           <Inputbox
             onChange={(e) => {
               setemail(e.target.value);
-              console.log(email);
             }}
             placeholder="Enter your email"
             label={"Email"}

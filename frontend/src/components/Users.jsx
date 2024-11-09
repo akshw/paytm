@@ -10,7 +10,11 @@ const Users = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/v1/user/bulk" + filter)
+      .get("http://localhost:3000/api/v1/user/bulk?filter=" + filter, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then((response) => {
         setusers(response.data.user);
       });
@@ -31,7 +35,7 @@ const Users = () => {
       </div>
       <div>
         {users.map((user) => (
-          <User user={user} key={user} />
+          <User user={user} key={user.id} />
         ))}
       </div>
     </>
@@ -56,7 +60,7 @@ function User({ user }) {
       <div className="flex flex-col justify-center h-ful">
         <Button
           onClick={() => {
-            navigate("/send?id=" + user._id + "&name" + user.username);
+            navigate("/send?id=" + user.id + "&name=" + user.username);
           }}
           label={"Send Money"}
         />

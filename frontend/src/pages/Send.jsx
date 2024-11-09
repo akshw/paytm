@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Send = () => {
-  const { searchparams } = useSearchParams();
+  const navigate = useNavigate();
+  const [searchparams] = useSearchParams();
   const id = searchparams.get("id");
   const name = searchparams.get("name");
   const [amount, setamount] = useState(0);
@@ -48,10 +50,14 @@ const Send = () => {
                     },
                     {
                       headers: {
-                        Authorization: "Bearer" + localStorage.getItem("token"),
+                        Authorization: `Bearer ${localStorage.getItem(
+                          "token"
+                        )}`,
                       },
                     }
                   );
+                  alert("Transfered Sucessfully");
+                  navigate("/dashboard");
                 }}
                 className="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white"
               >
