@@ -43,7 +43,7 @@ const Send = () => {
               <button
                 onClick={() => {
                   axios.post(
-                    "http://localhost:3000/api/v1/account/transfer",
+                    "https://paytm-be-2ff8.onrender.com/api/v1/account/transfer",
                     {
                       to: id,
                       amount,
